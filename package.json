@@ -1,8 +1,8 @@
 {
-  "name": "ssh2-async",
-  "version": "0.6.0",
-  "description": "Client focused async SSH2 wrapper providing convience for tunneling, shelling, and exec'ing.",
-  "main": "index.js",
+  "name": "ts-ssh",
+  "version": "0.0.1",
+  "description": "Async TypeScript client wrapper over JavaScript ssh2 providing convience for tunneling, shelling, and exec'ing.",
+  "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "./node_modules/.bin/tsc"
@@ -15,6 +15,7 @@
     "@types/gulp-shell": "0.0.31",
     "@types/jest": "^22.2.3",
     "@types/node": "^9.6.6",
+    "@types/ssh2": "^0.5.35",
     "del": "^3.0.0",
     "gulp": "^3.9.1",
     "gulp-cli": "^2.0.1",
@@ -23,15 +24,18 @@
     "gulpclass": "^0.1.2",
     "jest": "^22.4.3",
     "replace": "^0.3.0",
-    "ssh2": "^0.6.0",
     "ts-jest": "^22.4.4",
     "ts-node": "^6.0.0",
-    "typescript": "^2.8.3"
+    "typescript": "^3.7.5"
   },
   "dependencies": {
-    "@types/ssh2": "^0.5.35",
-    "promise-queue": "^2.2.5"
+    "promise-queue": "^2.2.5",
+    "ssh2": "^0.6.0"
   },
+  "files": [
+    "dist/**/*",
+    "README.md"
+  ],
   "jest": {
     "roots": [
       "<rootDir>"
