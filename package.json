@@ -1,13 +1,17 @@
 {
   "name": "ts-ssh",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Async TypeScript client wrapper over JavaScript ssh2 providing convience for tunneling, shelling, and exec'ing.",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "compile": "./node_modules/.bin/tsc"
   },
-  "author": "",
+  "author": "Greg Zapp (ProTip)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ProTip/ssh2-async.git"
+  },
   "license": "ISC",
   "devDependencies": {
     "@types/del": "^3.0.1",

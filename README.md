@@ -1,5 +1,5 @@
-SSH2 Async
-==========
+TS SSH
+==============
 
 Async ssh2 client built on the JavaScript native ssh2 project. The primary focus of this library is:
 
@@ -12,7 +12,7 @@ Async ssh2 client built on the JavaScript native ssh2 project. The primary focus
 ### Connect
 > **Note**: Always connect before running other commands! Always end so your program can exit!
 ```ts
-import {Service} from 'ssh2-async'
+import {Service} from 'ts-ssh'
 
 async function main() {
     const service = new Service()
