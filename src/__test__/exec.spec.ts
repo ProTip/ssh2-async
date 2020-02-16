@@ -1,4 +1,4 @@
-import {Service} from '../index'
+import {Client, Service} from '../index'
 
 jest.setTimeout(10000)
 
@@ -36,5 +36,21 @@ describe("Service", async () => {
             .connect()
         
         await service.end()
+    })
+
+    it('Forwards', async () => {
+        const client1 = new Client({host: '127.0.0.1', port: 2222, username: 'test', password: 'password'})
+
+        await client1.connect()
+
+        const sock = await client1.forwardOut('192.168.1.1', 8000, '127.0.0.1', 22)
+
+        const client2 = new Client({sock: sock, username: 'test', password: 'password'})
+        await client2.connect()
+
+        await client2.exec('true')
+
+        await client2.end()
+        await client1.end()
     })
 })

@@ -35,9 +35,11 @@ export class Util {
       let c = clients[x]
       let cNext = clients[x+1]
       await c.connect()
-      let nc = `nc -w 10 -v ${cNext.config.host} ${cNext.config.port || "22"}`
-      let sock = await c.stream(nc)
-      await Util.netCat(sock)
+      /** Netcat no longer necessary but we could add swappable tunnel sock providers in the future */
+      // let nc = `nc -w 10 -v ${cNext.config.host} ${cNext.config.port || "22"}`
+      // let sock = await c.stream(nc)
+      // await Util.netCat(sock)
+      const sock = await c.forwardOut('192.168.1.1', 8000, cNext.config.host!, cNext.config.port!)
       cNext.config.sock = sock
       cNext.config.host = undefined
     }
@@ -182,7 +184,7 @@ export class Client implements ISsh {
     let prom = new Promise((res, rej)=> {
       this.conn.on('ready', ()=> res())
       this.conn.on('error', (error)=>{
-        rej(new Error(`Connection failed: ${error}: Is your SSH key loaded? (ssh-add -K ~/.ssh/id_rsa on Mac)\n`))
+        rej(new Error(`Connection failed: ${error}`))
         return
       })
       this.conn.on("end", ()=> {
@@ -198,6 +200,17 @@ export class Client implements ISsh {
       })
     })
     this.conn.connect(this.config)
+    return prom
+  }
+
+  forwardOut(srcIP: string, srcPort: number, dstIP: string, dstPort: number): Promise<SshClient.Channel> {
+    let prom = new Promise<SshClient.Channel>((res, rej) => {
+      this.conn.forwardOut(srcIP, srcPort, dstIP, dstPort, (err, chan) => {
+        if (err)
+          rej(err)
+        res(chan)
+      })
+    })
     return prom
   }
 
