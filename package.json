@@ -1,6 +1,6 @@
 {
   "name": "ts-ssh",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Async TypeScript client wrapper over JavaScript ssh2 providing convience for tunneling, shelling, and exec'ing.",
   "main": "dist/index.js",
   "scripts": {
