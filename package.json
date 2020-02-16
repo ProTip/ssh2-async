@@ -22,9 +22,9 @@
     "gulp-shell": "^0.6.5",
     "gulp-typescript": "^4.0.2",
     "gulpclass": "^0.1.2",
-    "jest": "^22.4.3",
+    "jest": "^23.2.0",
     "replace": "^0.3.0",
-    "ts-jest": "^22.4.4",
+    "ts-jest": "^23.10.1",
     "ts-node": "^6.0.0",
     "typescript": "^3.7.5"
   },
@@ -37,12 +37,13 @@
     "README.md"
   ],
   "jest": {
+    "preset": "ts-jest",
     "roots": [
       "<rootDir>"
     ],
     "moduleDirectories": [
       "node_modules",
-      "<rootDir>"
+      "src"
     ],
     "moduleFileExtensions": [
       "ts",
