@@ -50,7 +50,7 @@ export class Util {
     let prom = new Promise<boolean>((res, rej) => {
       stream.stderr.on("data", (data)=> {
         stderr += data
-        if (/succeeded/.test(data)) {
+        if (/(succeeded|open)/.test(data)) {
           res(true)
         }
       })
