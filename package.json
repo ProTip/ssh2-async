@@ -34,7 +34,7 @@
   },
   "dependencies": {
     "promise-queue": "^2.2.5",
-    "ssh2": "^0.6.0"
+    "ssh2": "^1.4.0"
   },
   "files": [
     "dist/**/*",
